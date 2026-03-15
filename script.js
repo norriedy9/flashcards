@@ -41,7 +41,26 @@ function flipCard()
     displayCard()
 }
 
+function nextCard()
+{
+    showingTerm = true;
+    currentIndex = (currentIndex + 1) % flashcards.length
+    displayCard()
+}
+function prevCard()
+{
+    showingTerm = true;
+    currentIndex = (currentIndex - 1) % flashcards.length
+    if(currentIndex < 0)
+    {
+        currentIndex = flashcards.length - 1
+    }
+    displayCard()
+}
+
+card.addEventListener('click', flipCard)
+nextButton.addEventListener('click', nextCard)
+prevButton.addEventListener('click', prevCard)
 
 // This line will display the card when the page is refreshed
 window.onload = displayCard;
-card.addEventListener('click', flipCard)
