@@ -12,7 +12,8 @@ const prevButton = document.getElementById("prev-btn")
 const nextButton = document.getElementById("next-btn")
 const addButton = document.getElementById("add-card-btn")
 const card = document.getElementById("flashcard")
-//do i need to add smth for the fields of the enter text or nah
+const addTermText = document.getElementById("new-term")
+const addDefText = document.getElementById("new-definition")
 
 
 // These two variables will come in handy
@@ -58,9 +59,19 @@ function prevCard()
     displayCard()
 }
 
+function addCard()
+{
+    const newCardItem = {term: addTermText.value, definition: addDefText.value} //use value, not innerText, to get inputted text
+    flashcards.push(newCardItem)
+    addTermText.value = ""
+    addDefText.value = ""
+    
+}
+
 card.addEventListener('click', flipCard)
 nextButton.addEventListener('click', nextCard)
 prevButton.addEventListener('click', prevCard)
+addButton.addEventListener('click', addCard)
 
 // This line will display the card when the page is refreshed
 window.onload = displayCard;
